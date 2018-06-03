@@ -115,7 +115,7 @@ var DanteImagePopover = function (_React$Component) {
         // var parent = ReactDOM.findDOMNode(this.props.editor);
         // var parentBoundary = parent.getBoundingClientRect();
 
-        // var toolbarHeight = el.offsetHeight;
+        var toolbarHeight = el.offsetHeight;
 
         // var left = selectionBoundary.left + selectionBoundary.width / 2 - padd;
 
@@ -126,7 +126,7 @@ var DanteImagePopover = function (_React$Component) {
         var image = document.querySelector(".is-selected.is-mediaFocused img");
         if (!image) { return; }
         var selectionBoundary = image.getBoundingClientRect();
-        var top = selectionBoundary.top;
+        var top = selectionBoundary.top - toolbarHeight;
         var left = selectionBoundary.left + selectionBoundary.width / 2 - padd;
 
         window.onscroll = () => {
