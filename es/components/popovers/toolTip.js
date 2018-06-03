@@ -136,14 +136,19 @@ var DanteTooltip = function (_React$Component) {
 
     if (!selectionRect || !relativeRect || !selectionBoundary) return;
 
-    var diff = window.pageYOffset + parent.getBoundingClientRect().top;
-    var top = selectionRect.top - relativeRect.top - toolbarHeight + diff;
+    // var diff = window.pageYOffset + parent.getBoundingClientRect().top;
+    // var top = selectionRect.top - relativeRect.top - toolbarHeight + diff;
+    var top = selectionRect.top - (toolbarHeight + 10); // 10 is more space from the selected text to toolbar
     var left = selectionBoundary.left + selectionBoundary.width / 2 - padd;
 
     //let left = (selectionRect.left - relativeRect.left) + (selectionRect.width / 2)
 
     if (!top || !left) {
       return;
+    }
+
+    window.onscroll = () => {
+      this.relocate();
     }
 
     // console.log "SET SHOW FOR TOOLTIP INSERT MENU"

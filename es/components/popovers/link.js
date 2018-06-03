@@ -88,6 +88,10 @@ var DanteAnchorPopover = function (_React$Component) {
     var diff = window.pageYOffset + parent.getBoundingClientRect().top;
     var top = relativeRect.top - parentBoundary.top + toolbarHeight * 0.3 + diff;
 
+    window.onscroll = () => {
+      this.relocate();
+    }
+
     return {
       top: top,
       left: left

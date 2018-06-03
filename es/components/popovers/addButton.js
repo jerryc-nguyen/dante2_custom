@@ -224,11 +224,19 @@ var DanteInlineTooltip = function (_React$Component) {
         return;
       }
 
+      var top = selectionBoundary.top - 5; // we should style add button's height = selection height to remove minus 5;
+      var left = selectionBoundary.left - 50;
+
       // checkeamos si esta vacio
       this.display(block.getText().length === 0 && blockType === "unstyled");
+
+      window.onscroll = () => {
+        this.relocate();
+      }
+
       return this.setPosition({
-        top: coords.top + window.scrollY,
-        left: coords.left + window.scrollX - 60
+        top: top,
+        left: left
       });
     } else {
       return this.hide();

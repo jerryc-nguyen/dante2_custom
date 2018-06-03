@@ -105,23 +105,33 @@ var DanteImagePopover = function (_React$Component) {
       this.display(blockType === "image");
 
       if (blockType === "image") {
-        var selectionBoundary = node.anchorNode.parentNode.parentNode.parentNode.getBoundingClientRect();
+        // var selectionBoundary = node.anchorNode.parentNode.parentNode.parentNode.getBoundingClientRect();
 
-        var coords = selectionBoundary;
+        // var coords = selectionBoundary;
 
         var el = this.refs.image_popover;
         var padd = el.offsetWidth / 2;
 
-        var parent = ReactDOM.findDOMNode(this.props.editor);
-        var parentBoundary = parent.getBoundingClientRect();
+        // var parent = ReactDOM.findDOMNode(this.props.editor);
+        // var parentBoundary = parent.getBoundingClientRect();
 
-        var toolbarHeight = el.offsetHeight;
+        // var toolbarHeight = el.offsetHeight;
 
+        // var left = selectionBoundary.left + selectionBoundary.width / 2 - padd;
+
+        // var diff = window.pageYOffset + parent.getBoundingClientRect().top;
+
+        // var top = selectionBoundary.top - parentBoundary.top + toolbarHeight; //+ diff
+
+        var image = document.querySelector(".is-selected.is-mediaFocused img");
+        if (!image) { return; }
+        var selectionBoundary = image.getBoundingClientRect();
+        var top = selectionBoundary.top;
         var left = selectionBoundary.left + selectionBoundary.width / 2 - padd;
 
-        var diff = window.pageYOffset + parent.getBoundingClientRect().top;
-
-        var top = selectionBoundary.top - parentBoundary.top + toolbarHeight; //+ diff
+        window.onscroll = () => {
+          this.relocate();
+        }
 
         return this.setPosition({ top: top, left: left });
       }

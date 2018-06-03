@@ -1,0 +1,5 @@
+.inlineTooltip,
+.dante-menu,
+.dante-popover {
+  position: fixed !important;
+}
