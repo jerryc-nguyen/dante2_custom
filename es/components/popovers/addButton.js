@@ -211,24 +211,28 @@ var DanteInlineTooltip = function (_React$Component) {
         return;
       }
 
-      var node = getNode();
+      // var node = getNode();
 
-      var selectionBoundary = getSelectionRect(nativeSelection);
-      var coords = selectionBoundary; //utils.getSelectionDimensions(node)
+      // var selectionBoundary = getSelectionRect(nativeSelection);
+      // var coords = selectionBoundary; //utils.getSelectionDimensions(node)
 
       var parent = ReactDOM.findDOMNode(this.props.editor);
-      var parentBoundary = parent.getBoundingClientRect();
+      // var parentBoundary = parent.getBoundingClientRect();
 
       if (!this.isDescendant(parent, nativeSelection.anchorNode)) {
         this.hide();
         return;
       }
 
-      var top = selectionBoundary.top - 5; // we should style add button's height = selection height to remove minus 5;
-      var left = selectionBoundary.left - 50;
-
       // checkeamos si esta vacio
       this.display(block.getText().length === 0 && blockType === "unstyled");
+
+      var selectedLine = document.querySelector(".graf.graf--p.is-selected");
+      if (!selectedLine) { return; }
+      var selectionBoundary = selectedLine.getBoundingClientRect();
+
+      var top = selectionBoundary.top; // we should style add button's height = selection height to remove minus 5;
+      var left = selectionBoundary.left - (32 + 15);
 
       window.onscroll = () => {
         this.relocate();
