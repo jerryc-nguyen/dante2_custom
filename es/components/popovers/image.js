@@ -123,10 +123,17 @@ var DanteImagePopover = function (_React$Component) {
 
         // var top = selectionBoundary.top - parentBoundary.top + toolbarHeight; //+ diff
 
+
+        var scrollTopOnModal = 0;
+
+        if ($(".ui.dimmer").scrollTop()) {
+          scrollTopOnModal += $(".ui.dimmer").scrollTop();
+        }
+
         var image = document.querySelector(".is-selected.is-mediaFocused img");
         if (!image) { return; }
         var selectionBoundary = image.getBoundingClientRect();
-        var top = selectionBoundary.top - toolbarHeight;
+        var top = selectionBoundary.top + scrollTopOnModal - toolbarHeight;
         var left = selectionBoundary.left + selectionBoundary.width / 2 - padd;
 
         window.onscroll = () => {

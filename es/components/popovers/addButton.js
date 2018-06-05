@@ -239,10 +239,16 @@ var DanteInlineTooltip = function (_React$Component) {
       if (!selectedLine) { return; }
       var selectionBoundary = selectedLine.getBoundingClientRect();
 
-      var top = selectionBoundary.top;
+      var scrollTopOnModal = 0;
+
+      if ($(".ui.dimmer").scrollTop()) {
+        scrollTopOnModal += $(".ui.dimmer").scrollTop();
+      }
+
+      var top = selectionBoundary.top + scrollTopOnModal;
       var left = selectionBoundary.left - (32 + 15);
 
-      window.onscroll = () => {
+      window.onscroll = (event) => {
         if(!this._mounted) { return; }
         this.relocate();
       }

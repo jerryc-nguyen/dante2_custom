@@ -123,6 +123,8 @@ var DanteTooltip = function (_React$Component) {
     var parent = ReactDOM.findDOMNode(this.props.editor);
     var parentBoundary = parent.getBoundingClientRect();
 
+
+
     // hide if selected node is not in editor
     if (!this.isDescendant(parent, nativeSelection.anchorNode)) {
       this.hide();
@@ -138,12 +140,14 @@ var DanteTooltip = function (_React$Component) {
 
     if (!selectionRect || !relativeRect || !selectionBoundary) return;
 
-    // var diff = window.pageYOffset + parent.getBoundingClientRect().top;
-    // var top = selectionRect.top - relativeRect.top - toolbarHeight + diff;
-    var top = selectionRect.top - (toolbarHeight + 10); // 10 is more space from the selected text to toolbar
-    var left = selectionBoundary.left + selectionBoundary.width / 2 - padd;
+    var scrollTopOnModal = 0;
 
-    //let left = (selectionRect.left - relativeRect.left) + (selectionRect.width / 2)
+    if ($(".ui.dimmer").scrollTop()) {
+      scrollTopOnModal += $(".ui.dimmer").scrollTop();
+    }
+
+    var top = selectionRect.top + scrollTopOnModal - ( toolbarHeight + 10); // 10 is more space from the selected text to toolbar
+    var left = selectionBoundary.left + selectionBoundary.width / 2 - padd;
 
     if (!top || !left) {
       return;
