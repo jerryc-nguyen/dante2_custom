@@ -245,10 +245,10 @@ var DanteInlineTooltip = function (_React$Component) {
         scrollTopOnModal += $(".ui.dimmer").scrollTop();
       }
 
-      var top = selectionBoundary.top + scrollTopOnModal;
+      var top = selectionBoundary.top + scrollTopOnModal + 5;
       var left = selectionBoundary.left - (32 + 15);
 
-      window.onscroll = (event) => {
+      window.onscroll = () => {
         if(!this._mounted) { return; }
         this.relocate();
       }
