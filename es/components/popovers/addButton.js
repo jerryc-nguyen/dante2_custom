@@ -85,6 +85,14 @@ var DanteInlineTooltip = function (_React$Component) {
     return this.collapse();
   };
 
+  DanteInlineTooltip.prototype.componentDidMount = function componentDidMount() {
+    this._mounted = true;
+  };
+
+  DanteInlineTooltip.prototype.componentWillUnmount = function componentWillUnmount() {
+    this._mounted = false;
+  };
+
   DanteInlineTooltip.prototype.activeClass = function activeClass() {
     //if @props.show then "is-active" else ""
     if (this.isActive()) {
@@ -235,6 +243,7 @@ var DanteInlineTooltip = function (_React$Component) {
       var left = selectionBoundary.left - (32 + 15);
 
       window.onscroll = () => {
+        if(!this._mounted) { return; }
         this.relocate();
       }
 
