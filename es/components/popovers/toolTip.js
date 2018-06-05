@@ -92,6 +92,8 @@ var DanteTooltip = function (_React$Component) {
 
   DanteTooltip.prototype.relocate = function relocate() {
 
+    if (!document.getElementById("dante-menu")) { return; }
+
     var currentBlock = getCurrentBlock(this.props.editorState);
     var blockType = currentBlock.getType();
     // display tooltip only for unstyled
