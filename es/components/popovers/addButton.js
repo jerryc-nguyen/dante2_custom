@@ -236,7 +236,7 @@ var DanteInlineTooltip = function (_React$Component) {
 
       // checkeamos si esta vacio
       this.display(block.getText().length === 0 && blockType === "unstyled");
-      if (!selectedLine) { this.hide(); return; }
+      if (!selectedLine) { return; }
       var selectionBoundary = selectedLine.getBoundingClientRect();
 
       var top = selectionBoundary.top;

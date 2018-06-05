@@ -9,11 +9,11 @@ import { Map, fromJS } from 'immutable';
 import { convertToRaw, convertFromRaw, CompositeDecorator, getDefaultKeyBinding, ContentState, Editor, EditorState, Entity, RichUtils, DefaultDraftBlockRenderMap, SelectionState, Modifier } from 'draft-js';
 
 import { convertToHTML } from
-//, convertFromHTML 
+//, convertFromHTML
 'draft-convert';
 
 import { addNewBlock, resetBlockWithType, updateDataOfBlock,
-//updateTextOfBlock, 
+//updateTextOfBlock,
 getCurrentBlock, addNewBlockAt } from '../../model/index.js';
 
 import Link from '../decorators/link';
@@ -240,7 +240,7 @@ var DanteEditor = function (_React$Component) {
   };
 
   DanteEditor.prototype.handleUndeletables = function handleUndeletables(editorState) {
-    // undeletable behavior, will keep previous blockMap 
+    // undeletable behavior, will keep previous blockMap
     // if undeletables are deleted
     var undeletable_types = this.widgets.filter(function (o) {
       return o.undeletable;
@@ -444,7 +444,7 @@ var DanteEditor = function (_React$Component) {
   DanteEditor.prototype.handleTooltipDisplayOn = function handleTooltipDisplayOn(prop, display) {
     var _this5 = this;
 
-    // for button click on after inline style set, 
+    // for button click on after inline style set,
     // avoids inline popver to reappear on previous selection
     if (this.state.read_only) {
       return;
@@ -456,7 +456,6 @@ var DanteEditor = function (_React$Component) {
 
     return setTimeout(function () {
       var items = _this5.tooltipsWithProp(prop);
-      console.log(items);
       return items.map(function (o) {
         _this5.refs[o.ref].display(display);
         return _this5.refs[o.ref].relocate();
