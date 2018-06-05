@@ -92,7 +92,7 @@ var customHTML2Content = function customHTML2Content(HTML, blockRn) {
 
   // use DraftJS converter to do initial conversion. I don't provide DOMBuilder and
   // blockRenderMap arguments here since it should fall back to its default ones, which are fine
-  console.log(tempDoc.body.innerHTML);
+  // console.log(tempDoc.body.innerHTML);
   var content = convertFromHTML(tempDoc.body.innerHTML, getSafeBodyFromHTML, blockRn);
 
   var contentBlocks = content.contentBlocks;
@@ -100,7 +100,7 @@ var customHTML2Content = function customHTML2Content(HTML, blockRn) {
   // now replace <blockquote /> ContentBlocks with 'atomic' ones
   contentBlocks = contentBlocks.map(function (block) {
     var newBlock = void 0;
-    console.log("CHECK BLOCK", block.getType());
+    // console.log("CHECK BLOCK", block.getType());
     if (block.getType() !== 'blockquote') {
       return block;
     }
@@ -117,7 +117,7 @@ var customHTML2Content = function customHTML2Content(HTML, blockRn) {
       text: "",
       data: {
         url: json.imgSrc,
-        forceUpload: true
+        forceUpload: false
       }
     });
   });

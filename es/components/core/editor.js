@@ -155,12 +155,17 @@ var DanteEditor = function (_React$Component) {
     return _this;
   }
 
+  DanteEditor.prototype.componentWillUnMount = function componentWillUnMount() {
+    this._mounted = false;
+  }
+
   DanteEditor.prototype.componentDidMount = function componentDidMount() {
     var _this2 = this;
+    _this2._mounted = true;
 
     this.initializeState();
     window.addEventListener('resize', function () {
-      if (_this2.relocateTooltips) setTimeout(function () {
+      if (_this2.relocateTooltips && _this2._mounted) setTimeout(function () {
         return _this2.relocateTooltips();
       });
     });
@@ -884,7 +889,9 @@ var DanteEditor = function (_React$Component) {
     if (this.state.read_only) return;
 
     return this.tooltips.map(function (o) {
-      return _this11.refs[o.ref].relocate();
+      if (_this11.refs[o.ref]) {
+        return _this11.refs[o.ref].relocate();
+      }
     });
   };
 

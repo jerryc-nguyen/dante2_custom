@@ -156,10 +156,11 @@ var ImageBlock = function (_React$Component) {
     this.setState({
       url: this.img.src });
     var self = this;
+
     // exit only when not blob and not forceUload
-    if (!this.img.src.includes("blob:") && !this.props.block.data.get("forceUpload")) {
-      return;
-    }
+    // if (!this.img.src.includes("blob:") && !this.props.block.data.get("forceUpload")) {
+    //   return;
+    // }
     return this.img.onload = function () {
       _this2.setState({
         width: _this2.img.width,
@@ -167,7 +168,9 @@ var ImageBlock = function (_React$Component) {
         aspect_ratio: self.getAspectRatio(_this2.img.width, _this2.img.height)
       });
 
-      return _this2.handleUpload();
+      if (_this2.img.src.indexOf(window.location.host) != -1) {
+        return _this2.handleUpload();
+      }
     };
   };
 
