@@ -168,7 +168,7 @@ var ImageBlock = function (_React$Component) {
         aspect_ratio: self.getAspectRatio(_this2.img.width, _this2.img.height)
       });
 
-      if (_this2.img.src.indexOf(window.location.host) != -1) {
+      if (_this2.props.block.data.get("forceUpload")) {
         return _this2.handleUpload();
       }
     };
