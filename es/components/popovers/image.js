@@ -137,9 +137,10 @@ var DanteImagePopover = function (_React$Component) {
         var top = selectionBoundary.top + scrollTopOnModal - toolbarHeight;
         var left = selectionBoundary.left + selectionBoundary.width / 2 - padd;
 
-        window.onscroll = () => {
-          this.relocate();
-        }
+        // not working on modal!
+        // window.onscroll = () => {
+        //   this.relocate();
+        // }
 
         return this.setPosition({ top: top, left: left });
       }

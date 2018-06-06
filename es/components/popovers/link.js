@@ -95,9 +95,10 @@ var DanteAnchorPopover = function (_React$Component) {
     // var top = relativeRect.top - parentBoundary.top + toolbarHeight * 0.3 + diff;
     var top = selectionBoundary.top + scrollTopOnModal + 20;
 
-    window.onscroll = () => {
-      this.relocate();
-    }
+    // not working on modal!
+    // window.onscroll = () => {
+    //   this.relocate();
+    // }
 
     return {
       top: top,

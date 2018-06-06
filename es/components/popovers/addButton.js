@@ -221,37 +221,42 @@ var DanteInlineTooltip = function (_React$Component) {
       }
 
       var node = getNode();
+
       var selectedLine = $(node.anchorNode).parents(".graf.graf--p").get(0);
 
       // var selectionBoundary = getSelectionRect(nativeSelection);
       // var coords = selectionBoundary; //utils.getSelectionDimensions(node)
 
-      // var parent = ReactDOM.findDOMNode(this.props.editor);
-      // var parentBoundary = parent.getBoundingClientRect();
+      var parent = ReactDOM.findDOMNode(this.props.editor);
+      var parentBoundary = parent.getBoundingClientRect();
 
-      // if (!this.isDescendant(parent, nativeSelection.anchorNode)) {
-      //   this.hide();
-      //   return;
-      // }
+      if (!this.isDescendant(parent, nativeSelection.anchorNode)) {
+        this.hide();
+        return;
+      }
+
+      if (!selectedLine) { return; }
 
       // checkeamos si esta vacio
       this.display(block.getText().length === 0 && blockType === "unstyled");
-      if (!selectedLine) { return; }
+
       var selectionBoundary = selectedLine.getBoundingClientRect();
 
       var scrollTopOnModal = 0;
 
-      if ($(".ui.dimmer").scrollTop()) {
-        scrollTopOnModal += $(".ui.dimmer").scrollTop();
-      }
+      // if ($(".ui.dimmer").scrollTop()) {
+      //   scrollTopOnModal += $(".ui.dimmer").scrollTop();
+      // }
 
-      var top = selectionBoundary.top + scrollTopOnModal + 5;
-      var left = selectionBoundary.left - (32 + 15);
+      var parentToSelection = Math.abs(selectionBoundary.top - parentBoundary.top);
+      var top = parentToSelection + 10;
+      var left = -(32 + 15);
 
-      window.onscroll = () => {
-        if(!this._mounted) { return; }
-        this.relocate();
-      }
+      // not working on modal!
+      // window.onscroll = () => {
+      //   if(!this._mounted) { return; }
+      //   this.relocate();
+      // }
 
       return this.setPosition({
         top: top,

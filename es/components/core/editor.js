@@ -289,7 +289,9 @@ var DanteEditor = function (_React$Component) {
     return this.save.editorContent = content;
   };
 
-  DanteEditor.prototype.focus = function focus() {}
+  DanteEditor.prototype.focus = function focus() {
+    this.refs.editor.focus();
+  }
   //debugger
 
   //@props.refs.richEditor.focus()

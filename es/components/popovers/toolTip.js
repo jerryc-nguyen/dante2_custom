@@ -153,9 +153,10 @@ var DanteTooltip = function (_React$Component) {
       return;
     }
 
-    window.onscroll = () => {
-      this.relocate();
-    }
+    // not working on modal!
+    // window.onscroll = () => {
+    //   this.relocate();
+    // }
 
     // console.log "SET SHOW FOR TOOLTIP INSERT MENU"
     return this.setState({
