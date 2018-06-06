@@ -110,6 +110,7 @@ var DanteImagePopover = function (_React$Component) {
         // var coords = selectionBoundary;
 
         var el = this.refs.image_popover;
+        if (!el) { return; }
         var padd = el.offsetWidth / 2;
 
         // var parent = ReactDOM.findDOMNode(this.props.editor);
