@@ -482,12 +482,14 @@ var DanteEditor = function (_React$Component) {
 
     // if not html then fallback to default handler
 
-    if (!html) {
-      return this.handleTXTPaste(text, html);
-    }
-    if (html) {
-      return this.handleHTMLPaste(text, html);
-    }
+    // if (!html) {
+    //   return this.handleTXTPaste(text, html);
+    // }
+    // if (html) {
+    //   return this.handleHTMLPaste(text, html);
+    // }
+
+    return this.handleTXTPaste(text, html);
   };
 
   DanteEditor.prototype.handleTXTPaste = function handleTXTPaste(text, html) {
